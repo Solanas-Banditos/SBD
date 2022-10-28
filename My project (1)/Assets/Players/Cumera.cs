@@ -5,13 +5,12 @@ using UnityEngine;
 public class Cumera : MonoBehaviour
 {
     public Transform player;//игрок
-    public float speed = 1f;//скорость камеры
+    public float speed = 2f;//скорость камеры
     
-    //float rad = 7f;//радиус следования
-    float normw = 2f;//
+    public float normw = 5f;//коэф. увеличения коллайдера
     Rigidbody2D rig;//наш Rigidbody2D
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         //задаем размеры коллайдера камеры и Rigidbody2D
@@ -20,7 +19,7 @@ public class Cumera : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         
