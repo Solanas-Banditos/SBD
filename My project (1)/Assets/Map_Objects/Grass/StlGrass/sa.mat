@@ -69,9 +69,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WindDistortionMap:
-        m_Texture: {fileID: 2800000, guid: 92c5f18afcad65248ad56322eaa69668, type: 3}
-        m_Scale: {x: 0.01, y: 0.01}
-        m_Offset: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 1ed45cd465dcc0c459bb1e153cd5fbd2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -88,9 +88,9 @@ Material:
     m_Floats:
     - AlphaCutoff: 0.5
     - Ang: 2.43
-    - Base: 0.001
+    - Base: 0.05
     - DoublePlaned: 1
-    - Height: 0.001
+    - Height: 0.01
     - Speed: 1
     - _AlphaClip: 1
     - _Blend: 1
@@ -113,25 +113,25 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _ShadowAffectance: 0.2
-    - _Smoothness: 0.76
+    - _Smoothness: 0.31
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 1
-    - _TessellationUniform: 1
+    - _TessellationUniform: 8.19
     - _TranslucencyFactor: 0.5
     - _VertexColorTesselation: 0
-    - _WindStrength: 0.03
+    - _WindStrength: 2
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.44339618, g: 0.115032025, b: 0.115032025, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Darker: {r: 0, g: 0, b: 0, a: 1}
+    - _Darker: {r: 0.26265037, g: 0.40392157, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Vect: {r: 0.1405478, g: 0.9339623, b: 0, a: 1}
-    - _WindFrequency: {r: 0.05, g: 0.05, b: 0, a: 0}
+    - _Vect: {r: 0.82412004, g: 1, b: 0.1490196, a: 1}
+    - _WindFrequency: {r: 5, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8821367169985096780
 MonoBehaviour:
