@@ -3,16 +3,16 @@ Shader "Unlit/Colorer"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _RendTex ("Texture", 2D) = "white" {}
         _Intensity ("Intensity", Range(0,2)) = 1.0
         _Sc ("Surface color", Range(0,2)) = 0.5
     }
     SubShader
     {
-        Tags {"Queue"="Transparent" "RenderType"="Transparent"}
-        //Blend Zero SrcColor
-        //Blend Zero Zero
+        CULL OFF
 
-        GrabPass { }
+        Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
+
         Pass
         {
             CGPROGRAM
@@ -20,7 +20,7 @@ Shader "Unlit/Colorer"
             #pragma fragment frag
             #include "UnityCG.cginc"
             sampler2D _MainTex;
-            sampler2D _GrabTexture;
+            sampler2D _RendTex;
             float _Intensity;
             float _Sc;
             
@@ -48,24 +48,17 @@ Shader "Unlit/Colorer"
 
                 return vertexOutput;
             }
+
             fixed4 frag (VertexOutput i) : SV_Target
             {
-                //fixed2 uv = i.uv;
-                //fixed3 col = 0.5 + 0.5*cos(_CosTime.w*3 + uv.xyx+fixed3(0,2,4));
-                //col = 0;
+                fixed4 mainColor = tex2D(_MainTex, i.texcoord);
+                half4 rendColor = tex2D(_RendTex, i.texcoord);
 
-                float2 grabTexcoord = i.screenPos.xy / i.screenPos.w; 
-                grabTexcoord.x = (grabTexcoord.x + 1.0) * .5;
-                grabTexcoord.y = (grabTexcoord.y + 1.0) * .5; 
-                #if UNITY_UV_STARTS_AT_TOP
-                grabTexcoord.y = 1.0 - grabTexcoord.y;
-                #endif
-                fixed4 grabColor = tex2D(_GrabTexture, grabTexcoord); 
+                //grabColor = grabColor - grabColor* color * (_Intensity);
 
-                half4 color = _Sc - tex2D(_MainTex, i.texcoord);
+                rendColor.a = 0;
 
-                grabColor = grabColor - grabColor* color * (_Intensity);
-                return grabColor;
+                return rendColor;
             }
             ENDCG
         }
